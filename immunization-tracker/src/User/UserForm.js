@@ -4,7 +4,20 @@ import * as yup from 'yup';
 import axios from 'axios';
 
 const UserForm = (props) => {
-	return <div />;
+	return (
+		<Form>
+			<Field />
+		</Form>
+	);
 };
 
-export default UserForm;
+export default withFormik({
+	mapPropsToValues : (props) => {
+		return {
+			name     : props.name || '',
+			email    : props.email || '',
+			password : props.password || '',
+			service  : props.service || false,
+		};
+	},
+})(UserForm);
