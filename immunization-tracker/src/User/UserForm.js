@@ -28,10 +28,7 @@ const UserForm = ({errors, touched, status}) => {
 		{touched.Birth && errors.Birth && <p className ='error'>{errors.Birth} </p>}
 		
 		<Field type ="text" name ="Date of Birth" placeholder ="*Month/Date/Year" />	
-
-		{touched.Gender && errors.Gender && <p className ='error'>{errors.Gender} </p>}
-		
-		<Field type ="text" name ="Gender" placeholder ="*Gender:F/M" />	
+	
 
 		<h2>Your Address</h2>
 		{touched.Address && errors.Address && <p className ='error'>{errors.Address} </p>}
@@ -51,10 +48,7 @@ const UserForm = ({errors, touched, status}) => {
 		
 		<Field type ="text" name ="Phone Number" placeholder ="*Phone Number" />
 
-		{touched.Email && errors.Email && <p className ='error'>{errors.Email} </p>}
 		
-        <Field type ="email" name ="Email Address (Primary)" placeholder ="*Email Address (Primary)" />
-
 		<h2>Dependents:</h2>
 		<section className ="buttons">
 			<div className ="addDependents">
@@ -75,24 +69,21 @@ const UserForm = ({errors, touched, status}) => {
 		{[...Array(numDependents).keys()].map(i => 
 		<>
 		{touched["ChildName"+i] && errors["ChildName" +i] && <p className ='error'>{errors["ChildName" +i]} </p>}
-		<p>Child Name</p>
+		<p>Child's Name</p>
         <Field type ="Text" name ={"ChildName"+i} placeholder ="*First Name and Last Name" />
 
 		{touched["KidBirth" +i] && errors["KidBirth" +i] && <p className ='error'>{errors["KidBirth" +i]} </p>}
 		<p>Child's Birthday</p>
 		<Field type ="text" name ={"Child's Birthday"+i} placeholder ="*Month/Date/Year" />
 
-		{touched["KidGender" +i] && errors["KidGender" +i] && <p className ='error'>{errors["KidGender" +i]} </p>}
-		<p>Gender</p>
-		<Field type ="text" name ={"Kid'Gender"+1} placeholder ="*F/M" />
 		</>
 		)}	
 
-		<h2>Set Username and Password</h2>
-		{touched.UserName && errors.UserName && <p className ='error'>{errors.UserName} </p>}
-		<p>Username</p>
-        <Field type ="text" name ="Username" placeholder ="*Username" />
-        
+		<h2>Set Email Address and Password</h2>
+		{touched.Email && errors.Email && <p className ='error'>{errors.Email} </p>}
+		<p>Email Address</p>
+        <Field type ="email" name ="Email Address (Primary)" placeholder ="*Email Address (Primary)" />
+
 		{touched.Password && errors.Password && <p className ='error'>{errors.Password} </p>}
 		<p>Password</p>
         <Field type ="password" name ="Password" placeholder ="*Password" />
@@ -125,18 +116,16 @@ export default withFormik({
 			FirstName: values.FirstName || "", 
 			LastName: values.LastName || "", 
 			Birth: values.Birth || "",
-			Gender: values.Gender || "",
+			
 			Address: values.Address || "",
 			City: values.City || "",
 			State: values.State || "",
 			Phonenumber: values.Phonenumber || "",
-			Email: values.Email || "",
-
+			
 			ChildName: values.ChildName || "",
 			KidBirth: values.KidBirth || "",
-			KidGender: values.KidGender || "",
-
-			UserName: values.UserName || "",
+		
+			Email: values.Email || "",
             Password: values.Password ||"",
             Permission: values.Permission || false
         }
@@ -145,18 +134,17 @@ export default withFormik({
 		FirstName: yup.string().required("First Name is required!"),
 		LastName: yup.string().required("Last Name is required!"),
 		Birth: yup.string().required("Date of Birth is required!"),
-		Gender: yup.string().required("Gender is required!"),
+		
 		Address: yup.string().required("Address is required!"),
 		City: yup.string().required("City is required!"),
 		State: yup.string().required("State is required!"),
 		Phonenumber: yup.string().required("Phone number is required!"),
-		Email: yup.string().required("Email address is required!"),
+	
 
 		ChildName: yup.string().required("Child name is required!"),
 		KidBirth: yup.string().required("Child's Birthday is required!"),
-		KidGender: yup.string().required("KidGender is required!"),
 
-		UserName: yup.string().required("Username is required!"),
+		Email: yup.string().required("Email address is required!"),
         Password: yup.string().required("Password is required!"),
         Permission: yup.boolean().oneOf([true], "Must check the Permission")
     }),
