@@ -4,7 +4,13 @@ import StaffForm from './Staff/StaffForm';
 import './App.css';
 
 function App() {
-	return <div />;
+	return (
+	<div className="App">
+		<UserForm />
+		{}
+	
+	</div>
+	); 
 }
 
 export default App;
