@@ -94,7 +94,7 @@ const UserForm = ({errors, touched, status}) => {
 		
 
         {touched.Permission && errors.Permission && <p className ='error'>{errors.Permission} </p>}
-		<p>Permission</p>
+		<h2>Permission</h2>
         <label>
         <Field type ="checkbox" name ="Permission"/>
         <span>I grant permission for an office staff to edit my immunization records. </span>
