@@ -27,7 +27,7 @@ const UserForm = ({errors, touched, status}) => {
 		
 		{touched.Birth && errors.Birth && <p className ='error'>{errors.Birth} </p>}
 		
-		<Field type ="text" name ="Date of Birth" placeholder ="*Month/Date/Year" />	
+		<Field type ="date" name ="Date of Birth" placeholder ="*Month/Date/Year" />	
 	
 
 		<h2>Your Address</h2>
@@ -74,7 +74,7 @@ const UserForm = ({errors, touched, status}) => {
 
 		{touched["KidBirth" +i] && errors["KidBirth" +i] && <p className ='error'>{errors["KidBirth" +i]} </p>}
 		<p>Child's Birthday</p>
-		<Field type ="text" name ={"Child's Birthday"+i} placeholder ="*Month/Date/Year" />
+		<Field type ="date" name ={"Child's Birthday"+i} placeholder ="*Month/Date/Year" />
 
 		</>
 		)}	
@@ -149,7 +149,7 @@ export default withFormik({
         Permission: yup.boolean().oneOf([true], "Must check the Permission")
     }),
     handleSubmit: (values, { setStatus }) => {//value comes through to setter 
-       // "https://reqres.in/api/users"//3. how to POST rquest this url? 
+       // "https://bw4-immunization.herokuapp.com/api/parents"//3. how to POST rquest this url? 
        axios.post("https://reqres.in/api/users", values)
         .then((res) => {
            setStatus(res.data)
