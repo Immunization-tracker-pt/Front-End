@@ -17,6 +17,7 @@ const UserForm = ({errors, touched, status}) => {
 	return (
 		<Form>
 		<h2>Basic Contact Information</h2>
+		<p>Your Name: </p>
 		{touched.FirstName && errors.FirstName && <p className ='error'>{errors.FirstName} </p>}
         
 		<Field type ="text" name ="First Name" placeholder ="*First Name" />
@@ -25,12 +26,13 @@ const UserForm = ({errors, touched, status}) => {
 		
 		<Field type ="text" name ="Last Name" placeholder ="*Last Name" />	
 		
+		<p>Date of Birth: </p>
 		{touched.Birth && errors.Birth && <p className ='error'>{errors.Birth} </p>}
 		
 		<Field type ="date" name ="Date of Birth" placeholder ="*Month/Date/Year" />	
 	
 
-		<h2>Your Address</h2>
+		<p>Your Address</p>
 		{touched.Address && errors.Address && <p className ='error'>{errors.Address} </p>}
 		
 		<Field type ="text" name ="Address" placeholder ="*Address" />
@@ -43,7 +45,7 @@ const UserForm = ({errors, touched, status}) => {
 		
 		<Field type ="text" name ="State/Province" placeholder ="*State/Province" />
 
-		<h2>Contact Information</h2>
+		<p>Contact Information</p>
 		{touched.Phonenumber && errors.Phonenumber && <p className ='error'>{errors.Phonenumber} </p>}
 		
 		<Field type ="text" name ="Phone Number" placeholder ="*Phone Number" />
@@ -73,7 +75,7 @@ const UserForm = ({errors, touched, status}) => {
         <Field type ="Text" name ={"ChildName"+i} placeholder ="*First Name and Last Name" />
 
 		{touched["KidBirth" +i] && errors["KidBirth" +i] && <p className ='error'>{errors["KidBirth" +i]} </p>}
-		<p>Child's Birthday</p>
+		<p>Child's Date of Birth</p>
 		<Field type ="date" name ={"Child's Birthday"+i} placeholder ="*Month/Date/Year" />
 
 		</>
