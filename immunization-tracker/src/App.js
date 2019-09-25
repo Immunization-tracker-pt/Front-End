@@ -1,21 +1,39 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
+import AuthRoute from './CustomMiddleware/AuthRoute';
+import NavBar from './Visual/NavBar';
 import UserForm from './User/UserForm';
 import NewUserForm from './User/NewUserForm';
 import StaffForm from './Staff/StaffForm';
 import Login from './User/Login';
-import UserHomePage from './User/UserHomePage.js'; 
+import Logout from './User/Logout'
+import UserHomePage from './User/UserHomePage.js';
 import './App.css';
 
 function App() {
+
 	return (
 	<div className="App">
-		<Route exact path ="/" component = {NewUserForm} /> {/*placeholding for landing page}*/}
-		<Route path ="/userregister" component = {UserForm} />
-		<Route path ="/providerregister" component = {StaffForm} />
-		<Route path ='/register' render ={(props) => <UserForm {...props} />} />
-		<Route path = "/home" component = {UserHomePage} />
-		<Route path ="/login" component = {Login} />
+		{/* NavBar */}
+		<Route path ="/" component={NavBar} />
+
+		<div className="content-wrapper">
+
+			{/*placeholding for landing page}*/}
+			<Route exact path ="/" component = {NewUserForm} />
+
+			{/* Registration Routes */}
+			<Route path ="/userregister" component = {UserForm} />
+			<Route path ="/providerregister" component = {StaffForm} />
+
+			{/* Login Routes */}
+			<Route path ="/login" component = {Login} />
+			<Route path ="/logout" component = {Logout} />
+			<AuthRoute path = "/securehome" component = {UserHomePage} altPath = '/login' />
+
+			{/* Generic User Homepage Route for development*/}
+			<Route path = "/home" component = {UserHomePage} /> 
+		</div>
 	</div>
 	); 
 }

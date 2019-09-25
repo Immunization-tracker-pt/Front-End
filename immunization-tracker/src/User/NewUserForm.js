@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { withFormik, Form, Field } from 'formik';
-import * as yup from 'yup';
 import axios from 'axios';
 
 const UserForm = (props) => {
@@ -81,12 +80,12 @@ export default withFormik({
         .then((res) => {
             console.log('success', res);
             sessionStorage.setItem('token', res.data.token);
-            FormikBag.props.history.push('/home')
-            // Reroute to landing page
+            FormikBag.props.history.push('/securehome')
+            // Reroute to "secure" landing page
         })
         .catch((err) => {
             console.log("Error:", err);
-            // Error message
+            // Error message, need to re-render page with error warning
         });
     }
 })(UserForm);
