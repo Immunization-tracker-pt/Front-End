@@ -1,113 +1,84 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 
-const UserForm = ({errors, touched, status}) => {
-	console.log (status)
-	const [users, setUsers] = useState ([])
-	const [numDependents, setNumDependents] = useState (0)
+let parents = [{
+    "id": 1,
+    "username": "testfamily",
+    "email": "test@test.com",
+    "password": "test",
+    "firstname": "Jack",
+    "middlename": "Alex",
+    "lastname": "Smith",
+    "dob": "1980-09-19T21:01:23.369Z",
+    "gender": "male",
+    "street": "125 Address Way",
+    "street2": null,
+    "city": "A Big City",
+    "state_province": "California",
+    "phonenumber": "555-555-1234"
+  }];
 
-    useEffect (()=> {
-        if (status) {
-        setUsers([...users, status])
-        }
-	}, [status])
+const UserForm = ({errors, touched}) => {
 	
 	return (
 		<Form>
 		<h2>Basic Contact Information</h2>
 		<p>Your Name: </p>
-		{touched.FirstName && errors.FirstName && <p className ='error'>{errors.FirstName} </p>}
+		{touched.firstname && errors.firstname && <p className ='error'>{errors.firstname} </p>}
         
-		<Field type ="text" name ="First Name" placeholder ="*First Name" />
+		<Field type ="text" name ="firstname" placeholder ="*First Name" />
 
-		{touched.LastName && errors.LastName && <p className ='error'>{errors.LastName} </p>}
+		{touched.lastname && errors.lastname && <p className ='error'>{errors.lastname} </p>}
 		
-		<Field type ="text" name ="Last Name" placeholder ="*Last Name" />	
+		<Field type ="text" name ="lastname" placeholder ="*Last Name" />	
 		
 		<p>Date of Birth: </p>
-		{touched.Birth && errors.Birth && <p className ='error'>{errors.Birth} </p>}
+		{touched.dob && errors.dob && <p className ='error'>{errors.dob} </p>}
 		
-		<Field type ="date" name ="Date of Birth" placeholder ="*Month/Date/Year" />	
+		<Field type ="date" name ="dob" placeholder ="*Month/Date/Year" />	
 	
 
 		<p>Your Address</p>
-		{touched.Address && errors.Address && <p className ='error'>{errors.Address} </p>}
+		{touched.street && errors.street && <p className ='error'>{errors.street} </p>}
 		
-		<Field type ="text" name ="Address" placeholder ="*Address" />
+		<Field type ="text" name ="street" placeholder ="*Address" />
 
-		{touched.City && errors.City && <p className ='error'>{errors.City} </p>}
+		{touched.city && errors.city && <p className ='error'>{errors.city} </p>}
 		
-		<Field type ="text" name ="City" placeholder ="*City" />
+		<Field type ="text" name ="city" placeholder ="*City" />
 
-		{touched.State && errors.State && <p className ='error'>{errors.State} </p>}
+		{touched.state_province && errors.state_province && <p className ='error'>{errors.state_province} </p>}
 		
-		<Field type ="text" name ="State/Province" placeholder ="*State/Province" />
+		<Field type ="text" name ="state_province" placeholder ="*State/Province" />
 
 		<p>Contact Information</p>
-		{touched.Phonenumber && errors.Phonenumber && <p className ='error'>{errors.Phonenumber} </p>}
+		{touched.phonenumber && errors.phonenumber && <p className ='error'>{errors.phonenumber} </p>}
 		
-		<Field type ="text" name ="Phone Number" placeholder ="*Phone Number" />
+		<Field type ="text" name ="phonenumber" placeholder ="*Phone Number" />
 
 		
-		<h2>Dependents:</h2>
-		<section className ="buttons">
-			<div className ="addDependents">
-				<button className ="addDependents" onClick ={(e)=> {
-					setNumDependents(numDependents +1);
-					e.preventDefault();
-				}}>Add Dependents</button>
-			</div>
-			<div className ="removeDependents">
-				<button className ="removeDependents" onClick ={(e)=> {
-					setNumDependents(numDependents -1); 
-					e.preventDefault();
-				}}>Remove Dependents</button>
-			</div>
-
-		</section>
-
-		{[...Array(numDependents).keys()].map(i => 
-		<>
-		{touched["ChildName"+i] && errors["ChildName" +i] && <p className ='error'>{errors["ChildName" +i]} </p>}
-		<p>Child's Name</p>
-        <Field type ="Text" name ={"ChildName"+i} placeholder ="*First Name and Last Name" />
-
-		{touched["KidBirth" +i] && errors["KidBirth" +i] && <p className ='error'>{errors["KidBirth" +i]} </p>}
-		<p>Child's Date of Birth</p>
-		<Field type ="date" name ={"Child's Birthday"+i} placeholder ="*Month/Date/Year" />
-
-		</>
-		)}	
-
 		<h2>Set Email Address and Password</h2>
-		{touched.Email && errors.Email && <p className ='error'>{errors.Email} </p>}
+		{touched.email && errors.email && <p className ='error'>{errors.email} </p>}
 		<p>Email Address</p>
-        <Field type ="email" name ="Email Address (Primary)" placeholder ="*Email Address (Primary)" />
+        <Field type ="email" name ="email" placeholder ="*Email Address (Primary)" />
 
-		{touched.Password && errors.Password && <p className ='error'>{errors.Password} </p>}
+		{touched.password && errors.password && <p className ='error'>{errors.password} </p>}
 		<p>Password</p>
-        <Field type ="password" name ="Password" placeholder ="*Password" />
+        <Field type ="password" name ="password" placeholder ="*Password" />
 
-		{touched.ConfirmPassword && errors.ConfirmPassword && <p className ='error'>{errors.ConfirmPassword} </p>}
-        <p>Confirm Password</p>
-		<Field type ="password" name ="Confirm Password" placeholder ="*Confirm Password" />
-		
 
-        {touched.Permission && errors.Permission && <p className ='error'>{errors.Permission} </p>}
+        {touched.permission_granted && errors.permission_granted && <p className ='error'>{errors.permission_granted} </p>}
 		<h2>Permission</h2>
         <label>
-        <Field type ="checkbox" name ="Permission"/>
+        <Field type ="checkbox" name ="permission_granted"/>
         <span>I grant permission for an office staff to edit my immunization records. </span>
         </label>
 		
         <button type ="submit"> + Sign Me Up </button>
 
-   
-        {users.map(user => (
-            <div key={user.Email}>Name: {user.Name}</div>
-        ))}
+
 		</Form>
 	);
 };
@@ -115,46 +86,46 @@ const UserForm = ({errors, touched, status}) => {
 export default withFormik({
 	mapPropsToValues : (values) => {
 		return{
-			FirstName: values.FirstName || "", 
-			LastName: values.LastName || "", 
-			Birth: values.Birth || "",
+			firstname: values.firstname || "", 
+			lastname: values.lastname || "", 
+			dob: values.dob || "",
 			
-			Address: values.Address || "",
-			City: values.City || "",
-			State: values.State || "",
-			Phonenumber: values.Phonenumber || "",
+			street: values.street || "",
+			city: values.city || "",
+			state_province: values.state_province || "",
+			phonenumber: values.phonenumber || "",
 			
-			ChildName: values.ChildName || "",
-			KidBirth: values.KidBirth || "",
 		
-			Email: values.Email || "",
-            Password: values.Password ||"",
-            Permission: values.Permission || false
+			email: values.email || "",
+            password: values.password ||"",
+            permission_granted: values.permission_granted || false
         }
     },
     validationSchema: yup.object().shape ({//2. implement form validation
-		FirstName: yup.string().required("First Name is required!"),
-		LastName: yup.string().required("Last Name is required!"),
-		Birth: yup.string().required("Date of Birth is required!"),
+		firstname: yup.string().required("First Name is required!"),
+		lastname: yup.string().required("Last Name is required!"),
+		dob: yup.string().required("Date of Birth is required!"),
 		
-		Address: yup.string().required("Address is required!"),
-		City: yup.string().required("City is required!"),
-		State: yup.string().required("State is required!"),
-		Phonenumber: yup.string().required("Phone number is required!"),
+		street: yup.string().required("Address is required!"),
+		city: yup.string().required("City is required!"),
+		state_province: yup.string().required("State is required!"),
+		phonenumber: yup.string().required("Phone number is required!"),
 	
 
-		ChildName: yup.string().required("Child name is required!"),
-		KidBirth: yup.string().required("Child's Birthday is required!"),
-
-		Email: yup.string().required("Email address is required!"),
-        Password: yup.string().required("Password is required!"),
-        Permission: yup.boolean().oneOf([true], "Must check the Permission")
+		email: yup.string().required("Email address is required!"),
+        password: yup.string().required("Password is required!"),
+        permission_granted: yup.boolean().oneOf([true], "Must check the Permission")
     }),
-    handleSubmit: (values, { setStatus }) => {//value comes through to setter 
-       // "https://bw4-immunization.herokuapp.com/api/parents"//3. how to POST rquest this url? 
-       axios.post("https://reqres.in/api/users", values)
+    handleSubmit: (values, { props, setSubmitting }) => {//value comes through to setter 
+       //"https://bw4-immunization.herokuapp.com/api/parents/login"//3. how to POST rquest this url? 
+       axios.post("https://bw4-immunization.herokuapp.com/api/parents/register", values)
         .then((res) => {
-           setStatus(res.data)
+			console.log(res)
+			//debugger;
+			props.setToken(res.data.token); 
+			window.location.href = new URL(window.location.href).origin + "/home"; 
+			setSubmitting(false); 
+           //setStatus(res.data)
         })
         .catch((err) => {
             console.log("Error:", err)
