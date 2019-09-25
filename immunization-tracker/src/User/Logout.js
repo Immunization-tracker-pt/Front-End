@@ -1,4 +1,4 @@
-import auth from '../auth';
+import auth from '../CustomMiddleware/auth';
 function Logout(props){
      auth.logout(
         () => {
