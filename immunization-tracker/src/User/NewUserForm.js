@@ -54,7 +54,7 @@ const UserForm = (props) => {
 };
 
 export default withFormik({
-	mapPropsToValues({firstname, lastname, dob, street, city, state_province, phonenumber, childName, kidBirth, email, password, permission}){
+	mapPropsToValues({firstname, lastname, dob, street, city, state_province, phonenumber, email, password}){
 		return{
 			firstname: firstname || "", 
 			lastname: lastname || "", 
