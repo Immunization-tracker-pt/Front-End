@@ -6,7 +6,8 @@ import UserForm from './User/UserForm';
 import NewUserForm from './User/NewUserForm';
 import StaffForm from './Staff/StaffForm';
 import Login from './User/Login';
-import UserHomePage from './User/UserHomePage.js'; 
+import Logout from './User/Logout'
+import UserHomePage from './User/UserHomePage.js';
 import './App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 
 			{/* Login Routes */}
 			<Route path ="/login" component = {Login} />
+			<Route path ="/logout" component = {Logout} />
 			<AuthRoute path = "/securehome" component = {UserHomePage} altPath = '/login' />
 
 			{/* Generic User Homepage Route for development*/}
