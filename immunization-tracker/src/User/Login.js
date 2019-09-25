@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {Route} from "react-router-dom";
+import React from "react";;
+import auth from '../auth';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -8,7 +8,7 @@ import axios from "axios";
 function Login(props) {
   return (
     <Form>
-      {props.location.state && <h1 className="loginError">Incorrect Credentials</h1>}
+      {props.location.state && props.location.state.incorrectCredentials && <h1 className="loginError">Incorrect Credentials</h1>}
       <h1>Login</h1>
 
         <div className="loginError">
@@ -51,11 +51,12 @@ const FormikLogin = withFormik({
         loginData
       )
       .then(res => {
-        console.log(JSON.stringify(res));
         sessionStorage.setItem('token', res.data.token);
-        FormikBag.props.history.push('/home');
+        auth.login(
+          () => FormikBag.props.history.push('/securehome')
+        );
       })
-      .catch(err => FormikBag.props.history.push('/login',{incorrectCredentials: true}));
+      .catch(err => {console.log(err); FormikBag.props.history.push('/login',{incorrectCredentials: true})});
   }
 })(Login);
 

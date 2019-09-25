@@ -76,7 +76,6 @@ let parent_doctor_detail = [{
 let UserHomePage = (props) => {
     return (
         <table>
-            <p>Token: {sessionStorage.getItem('token')}</p>
             <tr>
                 <th>Child Name</th>
                 <th>Doctor Name</th>
