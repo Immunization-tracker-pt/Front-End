@@ -150,6 +150,7 @@ footer .footer-container .nav-container {
 }
 
 .login-form input{
+  font-size: 2rem;
   margin-top: 10px;
   height: 4vh;
   margin: 8px 5vw 0;

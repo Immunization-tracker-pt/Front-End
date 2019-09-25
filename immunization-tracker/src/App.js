@@ -13,9 +13,9 @@ function App() {
 
 	return (
 	<div className="App">
-
+		{/* NavBar */}
 		<Route path ="/" component={NavBar} />
-		
+
 		<div className="content-wrapper">
 			<Route exact path ="/" component = {NewUserForm} /> {/*placeholding for landing page}*/}
 
@@ -25,7 +25,7 @@ function App() {
 
 			{/* Login Routes */}
 			<Route path ="/login" component = {Login} />
-			<AuthRoute path = "/securehome" component = {UserHomePage} />
+			<AuthRoute path = "/securehome" component = {UserHomePage} altPath = '/login' />
 
 			{/* Generic User Homepage Route for development*/}
 			<Route path = "/home" component = {UserHomePage} /> 

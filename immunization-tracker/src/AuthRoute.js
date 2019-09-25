@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import auth from './auth';
 
-function AuthRoute({component: Component, ...rest}){
+function AuthRoute({component: Component, altPath, ...rest}){
     return (
         <Route {...rest} render = {
             props => {
@@ -10,7 +10,7 @@ function AuthRoute({component: Component, ...rest}){
                     <Component {...props} />
                     :
                     <Redirect to = {
-                        {pathname: "/login",
+                        {pathname: altPath,
                         state: {incorrectCredentials: true}
                         }
                     } />
