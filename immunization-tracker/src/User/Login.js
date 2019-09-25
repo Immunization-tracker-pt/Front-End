@@ -1,4 +1,4 @@
-import React from "react";;
+import React from "react";
 import auth from '../auth';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
