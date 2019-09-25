@@ -7,7 +7,7 @@ import axios from "axios";
 
 function Login(props) {
   return (
-    <Form>
+    <Form className="login-form">
       {props.location.state && props.location.state.incorrectCredentials && <h1 className="loginError">Incorrect Credentials</h1>}
       <h1>Login</h1>
 
