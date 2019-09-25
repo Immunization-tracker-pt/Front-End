@@ -46,6 +46,13 @@ const UserForm = (props) => {
 
 		<p>Password</p>
         <Field type ="password" name ="password" placeholder ="*Password" />
+
+        <br></br>
+
+        <Field type ="checkbox" name ="permission_granted" value="1" />
+        <label htmlFor="permission_granted">
+            <span>I grant permission for an office staff to edit my immunization records. </span>
+        </label>
 		
         <button type ="submit"> + Sign Me Up </button>
 
@@ -73,6 +80,7 @@ export default withFormik({
        axios.post("https://bw4-immunization.herokuapp.com/api/parents/register", values)
         .then((res) => {
             console.log('success', res);
+            sessionStorage.setItem('token', res.data.token);
             FormikBag.props.history.push('/home')
             // Reroute to landing page
         })

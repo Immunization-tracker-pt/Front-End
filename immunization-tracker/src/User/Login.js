@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
+import {Route} from "react-router-dom";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
+
 function Login(props) {
   return (
     <Form>
-      {props.incorrectCredentials && <h1 className="loginError">Incorrect Credentials</h1>}
+      {props.location.state && <h1 className="loginError">Incorrect Credentials</h1>}
       <h1>Login</h1>
 
         <div className="loginError">
@@ -42,16 +44,18 @@ const FormikLogin = withFormik({
       .required()
   }),
 
-  handleSubmit(loginData) {
+  handleSubmit(loginData, FormikBag) {
     axios
       .post(
         "https://bw4-immunization.herokuapp.com/api/parents/login",
         loginData
       )
       .then(res => {
-        console.log(JSON.stringify(res.status));
+        console.log(JSON.stringify(res));
+        sessionStorage.setItem('token', res.data.token);
+        FormikBag.props.history.push('/home');
       })
-      .catch(err => console.log(err, '!!!'))
+      .catch(err => FormikBag.props.history.push('/login',{incorrectCredentials: true}));
   }
 })(Login);
 
