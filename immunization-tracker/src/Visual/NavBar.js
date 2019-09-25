@@ -4,6 +4,7 @@ import logo from '../images/vaxandtrack.png';
 // import menuIcon from '../images/iconfinder_menu-alt_134216.png';
 
 function NavBar(){
+    const dynamicAuthRoute = () => sessionStorage.token !== undefined ? 'Logout' : 'Login';
     return(
         <section className="nav-container flex-container">
         <nav>
@@ -13,7 +14,7 @@ function NavBar(){
                 <li><NavLink to="/securehome">Home</NavLink></li>
                 <li><a href="#">About Us</a></li> {/* Link to marketing page */}
                 <li><NavLink to="/">Sign-up</NavLink></li>
-                <li><NavLink to="/login">Login</NavLink></li>
+                <li><NavLink to={`/${dynamicAuthRoute()}`}>{dynamicAuthRoute()}</NavLink></li>
             </ul>
         </nav>
     </section>
