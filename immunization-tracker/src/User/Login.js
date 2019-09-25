@@ -12,17 +12,17 @@ function Login(props) {
       <h1>Login</h1>
 
         <div className="loginError">
-          {props.errors.email && <h3>{props.errors.email}</h3>}
+          {props.touched.email && props.errors.email && <h3>{props.errors.email}</h3>}
         </div>
 
       <Field type="text" name="email" placeholder="Email" />
 
         <div className="loginError">
-          {props.errors.password && <h3>{props.errors.password}</h3>}
+          {props.touched.password && props.errors.password && <h3>{props.errors.password}</h3>}
         </div>
 
       <Field type="password" name="password" placeholder="Password" />
-
+      <br></br>
       <button type="submit">Submit</button>
     </Form>
   );
