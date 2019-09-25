@@ -6,15 +6,21 @@ import axios from "axios";
 function Login(props) {
   return (
     <Form>
+      {props.incorrectCredentials && <h1 className="loginError">Incorrect Credentials</h1>}
       <h1>Login</h1>
-      <div className="loginError">
-        {props.errors.email && <h3>{props.errors.email}</h3>}
-      </div>
+
+        <div className="loginError">
+          {props.errors.email && <h3>{props.errors.email}</h3>}
+        </div>
+
       <Field type="text" name="email" placeholder="Email" />
-      <div className="loginError">
-        {props.errors.password && <h3>{props.errors.password}</h3>}
-      </div>
+
+        <div className="loginError">
+          {props.errors.password && <h3>{props.errors.password}</h3>}
+        </div>
+
       <Field type="password" name="password" placeholder="Password" />
+
       <button type="submit">Submit</button>
     </Form>
   );
@@ -32,7 +38,8 @@ const FormikLogin = withFormik({
     email: Yup.string()
       .email()
       .required(),
-    password: Yup.string().required()
+    password: Yup.string()
+      .required()
   }),
 
   handleSubmit(loginData) {
@@ -41,7 +48,10 @@ const FormikLogin = withFormik({
         "https://bw4-immunization.herokuapp.com/api/parents/login",
         loginData
       )
-      .then(res => console.log(JSON.stringify(res)));
+      .then(res => {
+        console.log(JSON.stringify(res.status));
+      })
+      .catch(err => console.log(err, '!!!'))
   }
 })(Login);
 
