@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Route} from 'react-router-dom';
 import AuthRoute from './CustomMiddleware/AuthRoute';
 import NavBar from './Visual/NavBar';
@@ -9,8 +9,10 @@ import Login from './User/Login';
 import Logout from './User/Logout'
 import UserHomePage from './User/UserHomePage.js';
 import './App.css';
+import ChildForm from './User/ChildForm.js'; 
 
 function App() {
+	const [parentID, setParentID] = useState ();
 
 	return (
 	<div className="App">
@@ -23,7 +25,15 @@ function App() {
 			<Route exact path ="/" component = {NewUserForm} />
 
 			{/* Registration Routes */}
-			<Route path ="/userregister" component = {UserForm} />
+		
+
+			<Route path='/userregister'
+               render ={(props) => <UserForm {...props} setParentID={setParentID} />} 
+       />
+	   <Route path = "/child" 
+              render ={(props)=> <ChildForm {...props} parentID = {parentID} />} 
+              />
+
 			<Route path ="/providerregister" component = {StaffForm} />
 
 			{/* Login Routes */}

@@ -2,6 +2,7 @@ import React from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
+import auth from '../CustomMiddleware/auth';
 
 let parents = [{
     "id": 1,
@@ -120,10 +121,15 @@ export default withFormik({
        //"https://bw4-immunization.herokuapp.com/api/parents/login"//3. how to POST rquest this url? 
        axios.post("https://bw4-immunization.herokuapp.com/api/parents/register", values)
         .then((res) => {
+			
+			sessionStorage.setItem('parentID', res.data.parent.id);
+			sessionStorage.setItem('token', res.data.token);
+			auth.login(
+			  () => props.history.push('/child')
+			);
 			console.log(res)
 			//debugger;
-			props.setToken(res.data.token); 
-			window.location.href = new URL(window.location.href).origin + "/home"; 
+			
 			setSubmitting(false); 
            //setStatus(res.data)
         })
