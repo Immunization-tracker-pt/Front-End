@@ -7,7 +7,6 @@ const getJSON = (key, subData) => {
 
 
 function UserLanding(props){
-
     return(
         <div>
             <h1>{getJSON('message')}</h1>
