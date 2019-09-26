@@ -51,7 +51,7 @@ const FormikLogin = withFormik({
         loginData
       )
       .then(res => {
-        sessionStorage.setItem('token', res.data.token);
+        Object.keys(res.data).forEach(key => sessionStorage.setItem(key, JSON.stringify(res.data[key])));
         auth.login(
           () => FormikBag.props.history.push('/securehome')
         );

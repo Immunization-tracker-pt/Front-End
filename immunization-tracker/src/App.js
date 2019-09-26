@@ -8,6 +8,7 @@ import StaffForm from './Staff/StaffForm';
 import Login from './User/Login';
 import Logout from './User/Logout'
 import UserHomePage from './User/UserHomePage.js';
+import UserLanding from './User/newUserHomePage';
 import './App.css';
 import ChildForm from './User/ChildForm.js'; 
 
@@ -39,7 +40,7 @@ function App() {
 			{/* Login Routes */}
 			<Route path ="/login" component = {Login} />
 			<Route path ="/logout" component = {Logout} />
-			<AuthRoute path = "/securehome" component = {UserHomePage} altPath = '/login' />
+			<AuthRoute path = "/securehome" component = {UserLanding} altPath = '/login' />
 
 			{/* Generic User Homepage Route for development*/}
 			<Route path = "/home" component = {UserHomePage} /> 
