@@ -76,6 +76,7 @@ let parent_doctor_detail = [{
 let UserHomePage = (props) => {
     return (
         <table>
+            <thead>
             <tr>
                 <th>Child Name</th>
                 <th>Doctor Name</th>
@@ -83,6 +84,9 @@ let UserHomePage = (props) => {
                 <th>Date Received</th>
                 <th>Location</th>
             </tr>
+            </thead> 
+
+            <tbody>
             {immunizations.map(i => 
                 <tr> 
                     <td>
@@ -100,9 +104,11 @@ let UserHomePage = (props) => {
                     <td>
                         {i.location}
                     </td>
+
                 </tr>
+
             )}
-        
+        </tbody>
         </table>
     )
 }
