@@ -2,7 +2,7 @@ import React from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
-import auth from '../auth';
+import auth from '../CustomMiddleware/auth';
 
 let parents = [{
     "id": 1,
