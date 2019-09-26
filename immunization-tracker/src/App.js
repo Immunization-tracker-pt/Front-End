@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Route} from 'react-router-dom';
-import AuthRoute from './AuthRoute';
+import AuthRoute from './CustomMiddleware/AuthRoute';
 import NavBar from './Visual/NavBar';
 import UserForm from './User/UserForm';
 import NewUserForm from './User/NewUserForm';
@@ -20,7 +20,9 @@ function App() {
 		<Route path ="/" component={NavBar} />
 
 		<div className="content-wrapper">
-			<Route exact path ="/" component = {NewUserForm} /> {/*placeholding for landing page}*/}
+
+			{/*placeholding for landing page}*/}
+			<Route exact path ="/" component = {NewUserForm} />
 
 			{/* Registration Routes */}
 		

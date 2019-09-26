@@ -1,5 +1,5 @@
 import React from "react";
-import auth from '../auth';
+import auth from '../CustomMiddleware/auth';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
