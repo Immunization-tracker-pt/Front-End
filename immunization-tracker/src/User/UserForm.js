@@ -121,8 +121,7 @@ export default withFormik({
        //"https://bw4-immunization.herokuapp.com/api/parents/login"//3. how to POST rquest this url? 
        axios.post("https://bw4-immunization.herokuapp.com/api/parents/register", values)
         .then((res) => {
-			
-			sessionStorage.setItem('parentID', res.data.parent.id);
+			Object.keys(res.data.parent).forEach(key => sessionStorage.setItem(key, JSON.stringify(res.data.parent[key])));
 			sessionStorage.setItem('token', res.data.token);
 			auth.login(
 			  () => props.history.push('/child')
