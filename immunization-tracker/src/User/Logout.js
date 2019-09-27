@@ -2,7 +2,7 @@ import auth from '../CustomMiddleware/auth';
 function Logout(props){
      auth.logout(
         () => {
-            sessionStorage.removeItem('token');
+            sessionStorage.clear();
             props.history.push('/login');
         }
     );

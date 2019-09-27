@@ -12,8 +12,8 @@ function NavBar(){
             <div className="mobile-nav"><i className="fa fa-bars"></i></div>
             <ul id="top-nav">
                 <li><NavLink to="/securehome">Home</NavLink></li>
-                <li><a href="#">About Us</a></li> {/* Link to marketing page */}
-                <li><NavLink to="/">Sign-up</NavLink></li>
+                <li><a href="https://vaxandtrack.netlify.com/about.html">About Us</a></li>
+                <li><NavLink to="/userregister">Sign-up</NavLink></li>
                 <li><NavLink to={`/${dynamicAuthRoute()}`}>{dynamicAuthRoute()}</NavLink></li>
             </ul>
         </nav>

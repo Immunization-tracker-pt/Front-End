@@ -3,7 +3,6 @@ import {Route} from 'react-router-dom';
 import AuthRoute from './CustomMiddleware/AuthRoute';
 import NavBar from './Visual/NavBar';
 import UserForm from './User/UserForm';
-import NewUserForm from './User/NewUserForm';
 import StaffForm from './Staff/StaffForm';
 import Login from './User/Login';
 import Logout from './User/Logout'
@@ -23,15 +22,16 @@ function App() {
 		<div className="content-wrapper">
 
 			{/*placeholding for landing page}*/}
-			<Route exact path ="/" component = {NewUserForm} />
+			<AuthRoute path = "/securehome" component = {UserLanding} altPath = '/login' />
 
 			{/* Registration Routes */}
-		
+			<Route exact path ="/" render ={(props) => <UserForm {...props} setParentID={setParentID} />} />
 
 			<Route path='/userregister'
                render ={(props) => <UserForm {...props} setParentID={setParentID} />} 
-       />
-	   <Route path = "/child" 
+       		/>
+
+	   		<Route path = "/child" 
               render ={(props)=> <ChildForm {...props} parentID = {parentID} />} 
               />
 
@@ -40,7 +40,6 @@ function App() {
 			{/* Login Routes */}
 			<Route path ="/login" component = {Login} />
 			<Route path ="/logout" component = {Logout} />
-			<AuthRoute path = "/securehome" component = {UserLanding} altPath = '/login' />
 
 			{/* Generic User Homepage Route for development*/}
 			<Route path = "/home" component = {UserHomePage} /> 
