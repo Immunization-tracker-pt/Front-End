@@ -51,12 +51,18 @@ function UserLanding(props){
 
             <tbody>
             {immunizations.map(i => 
-                <tr> 
+                <tr key = {i.id}> 
                     <td>
-                        {children.filter(c => c.id == i.child_id)[0].fullname}
+                        {(() => {
+                            let child = children.filter(c => c.id == i.child_id)[0];
+                            return child && child.fullname;
+                        })()}
                     </td>
                     <td>
-                        {doctors.filter (d => d.id == i.doctor_id)[0].name}
+                        {(() => {
+                            let doctor = doctors.filter (d => d.id == i.doctor_id)[0]; 
+                            return doctor && doctor.name; 
+                        })()}
                     </td>
                     <td>
                         {i.name}

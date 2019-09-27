@@ -6,7 +6,7 @@ import axios from 'axios';
 const ChildForm = (p) => {
     const [children, setChildren] = useState ([]);
    
-    let parentID = sessionStorage.getItem("parentID"); 
+    let parentID = sessionStorage.getItem("id"); 
     useEffect (() => {
         // console.log("hi"); 
         // setChildren([1])
@@ -61,7 +61,7 @@ const ChildForm = (p) => {
 		<p>Date of Birth</p>
 		<Field type ="date" name = "dob" placeholder ="*Month/Date/Year" />
 
-        <Field type ="hidden" name = "parent_id" value = {sessionStorage.getItem("parentID")} />
+        <Field type ="hidden" name = "parent_id" value = {parentID} />
         
         <button type ="submit"> Add Dependents </button>
 	
@@ -94,7 +94,7 @@ export default withFormik({
     handleSubmit: (values, { setSubmitting }) => {//value comes through to setter 
        //"https://bw4-immunization.herokuapp.com/api/parents/login"//3. how to POST rquest this url? 
        
-       values.parent_id = sessionStorage.getItem('parentID')
+       values.parent_id = sessionStorage.getItem('id')
        axios.post("https://bw4-immunization.herokuapp.com/api/children", values)
         .then((res) => {
             
