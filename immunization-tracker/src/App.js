@@ -24,6 +24,7 @@ function App() {
 			{/*placeholding for landing page}*/}
 			<AuthRoute path = "/securehome" component = {UserLanding} altPath = '/login' />
 
+
 			{/* Registration Routes */}
 			<Route exact path ="/" render ={(props) => <UserForm {...props} setParentID={setParentID} />} />
 
