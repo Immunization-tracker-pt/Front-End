@@ -23,7 +23,6 @@ function App() {
 		<div className="content-wrapper">
 
 			{/*placeholding for landing page}*/}
-			<Route exact path ="/" component = {NewUserForm} />
 
 			{/* Registration Routes */}
 		
