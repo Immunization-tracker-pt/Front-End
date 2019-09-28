@@ -38,14 +38,14 @@ function UserLanding(props){
     return(
         <div>
             <h1>{getJSON('message')}</h1>
-            <table>
+            <table class = 'table'>
             <thead>
             <tr>
-                <th>Child Name</th>
-                <th>Doctor Name</th>
-                <th>Immunizations Name</th>
-                <th>Date Received</th>
-                <th>Location</th>
+                <th scope ='col'>Child Name</th>
+                <th scope ='col'>Doctor Name</th>
+                <th scope ='col'>Immunizations Name</th>
+                <th scope ='col'>Date Received</th>
+                <th scope ='col'>Location</th>
             </tr>
             </thead> 
 

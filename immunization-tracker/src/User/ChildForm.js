@@ -25,11 +25,11 @@ const ChildForm = (p) => {
     }
     return (
         <>
-        <table>
+        <table class ='table'>
             <thead>
             <tr>
-                <th>Full Name </th>
-                <th>Date of Birth</th>
+                <th scope ='col'>Full Name </th>
+                <th scope ='col'>Date of Birth</th>
                 
             </tr>
             </thead>
@@ -48,26 +48,32 @@ const ChildForm = (p) => {
         </tbody>
         </table>
 
-		<Form>
+        <div class="container">
+		<div class="row justify-content-center">
+		
+		<Form class="col-lg-6">
+		
             <h2>Dependents:</h2>
 
 
 		{touched.fullname && errors.fullname && <p className ='error'>{errors.fullname} </p>}
-		<p>Full Name</p>
-        <Field type ="Text" name ="fullname" placeholder ="*Full Name" />
+		<p class='my-3'>Full Name</p>
+        <Field type ="Text" className = 'form-control' name ="fullname" placeholder ="*Full Name" />
 
 
 		{touched.dob && errors.dob && <p className ='error'>{errors.dob} </p>}
-		<p>Date of Birth</p>
-		<Field type ="date" name = "dob" placeholder ="*Month/Date/Year" />
+		<p class='my-3'>Date of Birth</p>
+		<Field type ="date" className = 'form-control' name = "dob" placeholder ="*Month/Date/Year" />
 
         <Field type ="hidden" name = "parent_id" value = {parentID} />
         
-        <button type ="submit"> Add Dependents </button>
+        <button class = "btn btn-primary" type ="submit"> Add Dependents </button>
 	
 			
 
         </Form>
+        </div>
+        </div>
 
         <button onClick = {done}> DONE </button>
         </>

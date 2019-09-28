@@ -24,63 +24,68 @@ let parents = [{
 const UserForm = ({errors, touched}) => {
 	
 	return (
-		<Form>
+		<div class="container">
+		<div class="row justify-content-center">
+		
+		<Form class="col-lg-6">
 		<h2>Basic Contact Information</h2>
-		<p>Your Name: </p>
-		{touched.firstname && errors.firstname && <p className ='error'>{errors.firstname} </p>}
-        
-		<Field type ="text" name ="firstname" placeholder ="*First Name" />
-
+		<div class="form-group">
+			<label class ='my-3'>Your Name: </label>
+			{touched.firstname && errors.firstname && <p className ='error'>{errors.firstname} </p>}
+			
+			<Field type ="text" className = 'form-control' name ="firstname" placeholder ="*First Name" />
+		</div>
 		{touched.lastname && errors.lastname && <p className ='error'>{errors.lastname} </p>}
 		
-		<Field type ="text" name ="lastname" placeholder ="*Last Name" />	
+		<Field type ="text" className = 'form-control' name ="lastname" placeholder ="*Last Name" />	
 		
-		<p>Date of Birth: </p>
+		<p class='my-3'>Date of Birth: </p>
 		{touched.dob && errors.dob && <p className ='error'>{errors.dob} </p>}
 		
-		<Field type ="date" name ="dob" placeholder ="*Month/Date/Year" />	
+		<Field type ="date" className = 'form-control' name ="dob" placeholder ="*Month/Date/Year" />	
 	
 
-		<p>Your Address</p>
+		<p class='my-3'>Your Address</p>
 		{touched.street && errors.street && <p className ='error'>{errors.street} </p>}
 		
-		<Field type ="text" name ="street" placeholder ="*Address" />
+		<Field type ="text" className = 'form-control' name ="street" placeholder ="*Address" />
 
 		{touched.city && errors.city && <p className ='error'>{errors.city} </p>}
 		
-		<Field type ="text" name ="city" placeholder ="*City" />
+		<Field type ="text" className = 'form-control' name ="city" placeholder ="*City" />
 
 		{touched.state_province && errors.state_province && <p className ='error'>{errors.state_province} </p>}
 		
-		<Field type ="text" name ="state_province" placeholder ="*State/Province" />
+		<Field type ="text" className = 'form-control' name ="state_province" placeholder ="*State/Province" />
 
-		<p>Contact Information</p>
+		<p class='my-3'>Contact Information</p>
 		{touched.phonenumber && errors.phonenumber && <p className ='error'>{errors.phonenumber} </p>}
 		
-		<Field type ="text" name ="phonenumber" placeholder ="*Phone Number" />
+		<Field type ="text" className = 'form-control' name ="phonenumber" placeholder ="*Phone Number" />
 
 		
-		<h2>Set Email Address and Password</h2>
 		{touched.email && errors.email && <p className ='error'>{errors.email} </p>}
-		<p>Email Address</p>
-        <Field type ="email" name ="email" placeholder ="*Email Address (Primary)" />
+		<p class='my-3'>Email Address</p>
+        <Field type ="email" className = 'form-control' name ="email" placeholder ="*Email Address (Primary)" />
 
 		{touched.password && errors.password && <p className ='error'>{errors.password} </p>}
-		<p>Password</p>
-        <Field type ="password" name ="password" placeholder ="*Password" />
+		<p class='my-3'>Password</p>
+        <Field type ="password" className = 'form-control'  name ="password" placeholder ="*Password" />
 
 
         {touched.permission_granted && errors.permission_granted && <p className ='error'>{errors.permission_granted} </p>}
-		<h2>Permission</h2>
-        <label>
-        <Field type ="checkbox" name ="permission_granted"/>
+		
+        <label class='my-3'>
+        <Field type ="checkbox"  name ="permission_granted"/>
         <span>I grant permission for an office staff to edit my immunization records. </span>
         </label>
 		
-        <button type ="submit"> + Sign Me Up </button>
+        <button class = "btn btn-primary" type ="submit"> + Sign Me Up </button>
 
 
 		</Form>
+		</div>
+		</div>
 	);
 };
 
