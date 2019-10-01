@@ -20,17 +20,20 @@ function UserLanding(props){
         axios.get("https://bw4-immunization.herokuapp.com/api/children")
         .then((res) => {
             console.log(res.data); 
-           setChildren(res.data); 
+           setChildren(res.data);
+           //Get child based on id
         })
         axios.get("https://bw4-immunization.herokuapp.com/api/doctors")
         .then((res) => {
             console.log(res.data); 
            setDoctors(res.data); 
+           //Get Dr based on id
         })
         axios.get("https://bw4-immunization.herokuapp.com/api/immunizations")
         .then((res) => {
             console.log(res.data); 
            setImmunizations(res.data); 
+           //Get immunizations based on id
         })
     }, []
     )
