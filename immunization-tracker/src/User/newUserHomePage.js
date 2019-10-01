@@ -57,13 +57,13 @@ function UserLanding(props){
                 <tr key = {i.id}> 
                     <td>
                         {(() => {
-                            let child = children.filter(c => c.id == i.child_id)[0];
+                            const child = children.filter(c => c.id == i.child_id)[0];
                             return child && child.fullname;
                         })()}
                     </td>
                     <td>
                         {(() => {
-                            let doctor = doctors.filter (d => d.id == i.doctor_id)[0]; 
+                            const doctor = doctors.filter (d => d.id == i.doctor_id)[0]; 
                             return doctor && doctor.name; 
                         })()}
                     </td>

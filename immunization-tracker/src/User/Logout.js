@@ -3,6 +3,7 @@ function Logout(props){
      auth.logout(
         () => {
             sessionStorage.clear();
+            alert('Logout Succesful!')
             props.history.push('/login');
         }
     );
